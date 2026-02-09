@@ -1,0 +1,414 @@
+/* Cores institucionais da UP Maputo */
+:root {
+    --azul-escuro: #1a365d;
+    --azul-claro: #3182ce;
+    --verde-suave: #38a169;
+    --cinza-claro: #f7fafc;
+    --branco: #ffffff;
+    --cinza-texto: #4a5568;
+}
+
+/* Estilos gerais */
+body {
+    background-color: var(--cinza-claro);
+    color: var(--cinza-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: 0;
+    width: 250px;
+    background: var(--azul-escuro);
+    transition: all 0.3s ease;
+    position: fixed;
+    z-index: 1000;
+}
+
+.bg-dark-blue {
+    background-color: var(--azul-escuro) !important;
+}
+
+.sidebar-heading {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.logo-img {
+    max-width: 120px;
+    height: auto;
+}
+
+.list-group-item {
+    background-color: transparent;
+    color: var(--branco);
+    border: none;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover,
+.list-group-item.active {
+    background-color: var(--azul-claro);
+    color: var(--branco);
+}
+
+/* Conteúdo principal */
+#page-content-wrapper {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    transition: all 0.3s ease;
+}
+
+/* Botão menu toggle */
+#menu-toggle {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+}
+
+#menu-toggle:hover {
+    background-color: var(--azul-claro);
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--azul-claro);
+    color: var(--branco);
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--azul-claro);
+    border-color: var(--azul-claro);
+}
+
+.btn-primary:hover {
+    background-color: var(--azul-escuro);
+    border-color: var(--azul-escuro);
+}
+
+.btn-success {
+    background-color: var(--verde-suave);
+    border-color: var(--verde-suave);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+/* Tabelas */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(49, 130, 206, 0.1);
+}
+
+/* Badges */
+.badge {
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Progress bars */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e2e8f0;
+}
+
+.progress-bar {
+    background-color: var(--verde-suave);
+    border-radius: 5px;
+}
+
+/* Formulários */
+.form-control:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 0.25rem rgba(49, 130, 206, 0.25);
+}
+
+/* Alerts */
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: -250px;
+        width: 250px;
+    }
+    
+    #page-content-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    #sidebar-wrapper.show {
+        margin-left: 0;
+    }
+    
+    #page-content-wrapper.shrink {
+        margin-left: 250px;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+}
+
+/* Welcome page */
+.welcome-hero {
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
+    color: var(--branco);
+    padding: 4rem 0;
+    border-radius: 0 0 30px 30px;
+}
+
+.stats-card {
+    background: var(--branco);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stats-icon {
+    font-size: 2.5rem;
+    color: var(--azul-claro);
+    margin-bottom: 1rem;
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
+.stats-label {
+    color: var(--cinza-texto);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Votação page */
+.voting-card {
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.voting-card:hover {
+    border-color: var(--azul-claro);
+    box-shadow: 0 10px 25px rgba(49, 130, 206, 0.15);
+}
+
+.candidate-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--azul-claro);
+    margin: 0 auto 1rem;
+}
+
+/* Loader */
+.loader {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--azul-claro);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Estilos para Perfil */
+.profile-photo {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar-large {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.avatar-preview {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--cinza-texto);
+    margin-top: 0.5rem;
+}
+
+/* Timeline de Atividades */
+.activity-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.activity-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--azul-claro);
+    opacity: 0.3;
+}
+
+.activity-item {
+    position: relative;
+}
+
+.activity-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+    border: 2px solid white;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(49, 130, 206, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Form switches maiores */
+.form-check.form-switch .form-check-input {
+    width: 3em;
+    height: 1.5em;
+}
+
+/* Badges de status */
+.status-badge {
+    padding: 0.25em 0.75em;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Tema escuro (se implementado) */
+.theme-dark {
+    background-color: #1a1a2e;
+    color: #e2e8f0;
+}
+
+.theme-dark .card {
+    background-color: #16213e;
+    color: #e2e8f0;
+}
+
+.theme-dark .table {
+    color: #e2e8f0;
+}
+
+.theme-dark .form-control,
+.theme-dark .form-select {
+    background-color: #0f3460;
+    border-color: #1a365d;
+    color: #e2e8f0;
+}
+
+.theme-dark .form-control:focus,
+.theme-dark .form-select:focus {
+    background-color: #0f3460;
+    border-color: var(--azul-claro);
+    color: #e2e8f0;
+}
+.text-primary{
+    color: #1a1a2e !important;
+}
