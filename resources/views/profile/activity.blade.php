@@ -287,12 +287,6 @@
 </div>
 
 <style>
-pre {
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
+
 </style>
 @endsection

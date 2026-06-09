@@ -13,7 +13,7 @@ class AdminUserSeeder extends Seeder
         // Criar usuário administrador
         User::create([
             'name' => 'Administrador',
-            'email' => 'sengo@up.ac.mz',
+            'email' => 'a@g',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
             'categoria' => 'tecnico_administrativo',
@@ -24,7 +24,7 @@ class AdminUserSeeder extends Seeder
         // Criar usuário da comissão eleitoral
         User::create([
             'name' => 'Comissão Eleitoral',
-            'email' => 'comissao@up.ac.mz',
+            'email' => 'c@g',
             'password' => Hash::make('12345678'),
             'role' => 'comissao',
             'categoria' => 'docente',
@@ -35,7 +35,39 @@ class AdminUserSeeder extends Seeder
         // Criar usuário eleitor de exemplo
         User::create([
             'name' => 'Maria Eleitora',
-            'email' => 'maria@up.ac.mz',
+            'email' => 'e@g',
+            'password' => Hash::make('12345678'),
+            'role' => 'eleitor',
+            'categoria' => 'estudante',
+            'ativo' => true,
+           // 'email_verified_at' => now(),
+        ]);
+
+        User::create([
+            'name' => 'Mayla Bobo',
+            'email' => 'e1@g',
+            'password' => Hash::make('12345678'),
+            'role' => 'eleitor',
+            'categoria' => 'estudante',
+            'ativo' => true,
+           // 'email_verified_at' => now(),
+        ]);
+
+
+        User::create([
+            'name' => 'Stelio Bobo',
+            'email' => 'e2@g',
+            'password' => Hash::make('12345678'),
+            'role' => 'eleitor',
+            'categoria' => 'estudante',
+            'ativo' => true,
+           // 'email_verified_at' => now(),
+        ]);
+
+
+        User::create([
+            'name' => 'Marcia Nhantumbo',
+            'email' => 'e3@g',
             'password' => Hash::make('12345678'),
             'role' => 'eleitor',
             'categoria' => 'estudante',

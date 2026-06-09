@@ -521,43 +521,7 @@
 </div>
 
 <style>
-.avatar-circle-sm {
-    width: 40px;
-    height: 40px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
 
-.initials-sm {
-    font-size: 0.9rem;
-}
-
-.chart-placeholder {
-    opacity: 0.5;
-}
-
-@media print {
-    .no-print, .btn, .dropdown, .export-options, .card-header .btn {
-        display: none !important;
-    }
-    
-    .card {
-        border: 1px solid #ddd !important;
-        box-shadow: none !important;
-    }
-    
-    .winner-card {
-        background: #f8f9fa !important;
-        color: #333 !important;
-        border: 2px solid #28a745 !important;
-    }
-}
 </style>
 @endsection
 

@@ -95,63 +95,14 @@
 </div>
 
 <!-- Filtros -->
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <form method="GET" action="{{ route('eleicoes.index') }}" class="row g-3">
-            <div class="col-md-3">
-                <label for="status" class="form-label">Status</label>
-                <select name="status" id="status" class="form-select">
-                    <option value="">Todos os status</option>
-                    <option value="agendada" {{ request('status') == 'agendada' ? 'selected' : '' }}>Agendada</option>
-                    <option value="ativa" {{ request('status') == 'ativa' ? 'selected' : '' }}>Ativa</option>
-                    <option value="concluida" {{ request('status') == 'concluida' ? 'selected' : '' }}>Concluída</option>
-                    <option value="cancelada" {{ request('status') == 'cancelada' ? 'selected' : '' }}>Cancelada</option>
-                </select>
-            </div>
-            
-            <div class="col-md-3">
-                <label for="categoria" class="form-label">Categoria</label>
-                <select name="categoria" id="categoria" class="form-select">
-                    <option value="">Todas as categorias</option>
-                    <option value="estudante" {{ request('categoria') == 'estudante' ? 'selected' : '' }}>Estudante</option>
-                    <option value="docente" {{ request('categoria') == 'docente' ? 'selected' : '' }}>Docente</option>
-                    <option value="tecnico_administrativo" {{ request('categoria') == 'tecnico_administrativo' ? 'selected' : '' }}>Técnico</option>
-                </select>
-            </div>
-            
-            <div class="col-md-3">
-                <label for="ano" class="form-label">Ano</label>
-                <select name="ano" id="ano" class="form-select">
-                    <option value="">Todos os anos</option>
-                    @for($i = date('Y'); $i >= 2020; $i--)
-                        <option value="{{ $i }}" {{ request('ano') == $i ? 'selected' : '' }}>{{ $i }}</option>
-                    @endfor
-                </select>
-            </div>
-            
-            <div class="col-md-3">
-                <label class="form-label d-block">&nbsp;</label>
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-filter me-2"></i>Filtrar
-                    </button>
-                    <a href="{{ route('eleicoes.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-redo me-2"></i>Limpar
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+ 
 
 <div class="card shadow">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="m-0 fw-bold text-primary">Lista de Eleições</h6>
             <div class="btn-group">
-                <button class="btn btn-sm btn-outline-primary" id="exportBtn">
-                    <i class="fas fa-download me-1"></i>Exportar
-                </button>
+                
                 <button class="btn btn-sm btn-outline-secondary" id="refreshBtn">
                     <i class="fas fa-sync-alt me-1"></i>Atualizar
                 </button>
@@ -327,7 +278,7 @@
     </div>
 </div>
 
-<!-- Ações em Massa -->
+<!-- Ações em Massa --><!--
 @if(auth()->user()->hasRole('admin'))
 <div class="card shadow mt-4">
     <div class="card-header bg-dark text-white">
@@ -359,8 +310,8 @@
     </div>
 </div>
 @endif
-
-<!-- Calendário de Eleições (Opcional) -->
+-->
+<!-- Calendário de Eleições (Opcional) --><!--
 <div class="card shadow mt-4">
     <div class="card-header">
         <h6 class="m-0 fw-bold text-primary">
@@ -408,7 +359,7 @@
             @endif
         </div>
     </div>
-</div>
+</div>-->
 @endsection
 
 @section('scripts')

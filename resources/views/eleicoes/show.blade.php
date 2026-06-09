@@ -17,9 +17,11 @@
             <div>
                 <h1 class="h3 mb-1 text-dark">{{ $eleicao->titulo }}</h1>
                 <p class="text-muted mb-0">
-                    <i class="fas fa-briefcase me-2"></i>{{ $eleicao->cargo->nome }}
+                    <i class="fas fa-briefcase me-2"></i>{{ optional($eleicao->cargo)->nome ?? 'Sem cargo' }}
                     • 
-                    <i class="fas fa-calendar me-2"></i>{{ $eleicao->data_inicio->format('d/m/Y') }} - {{ $eleicao->data_fim->format('d/m/Y') }}
+                    <i class="fas fa-calendar me-2"></i>{{ optional($eleicao->data_inicio)->format('d/m/Y') ?? '---' }} 
+- 
+{{ optional($eleicao->data_fim)->format('d/m/Y') ?? '---' }}
                 </p>
             </div>
             <div class="btn-group">
@@ -42,7 +44,7 @@
                         </form>
                     @endif
                     
-                    <a href="{{ route('eleicoes.edit', $eleicao) }}" class="btn btn-warning">
+                    <a href="{{ route('eleicoes.edit', $eleicao->id) }}" class="btn btn-warning">
                         <i class="fas fa-edit me-2"></i>Editar
                     </a>
                 @endif
@@ -288,6 +290,7 @@
         </div>
         
         <!-- Ações Rápidas -->
+         
         <div class="card shadow mb-4">
             <div class="card-header">
                 <h6 class="m-0 fw-bold text-primary">
@@ -317,7 +320,7 @@
                     @endif
                     
                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('comissao'))
-                        <a href="{{ route('eleicoes.candidatos', $eleicao) }}" class="btn btn-warning">
+                        <a href="{{ route('candidatos.index', $eleicao) }}" class="btn btn-warning">
                             <i class="fas fa-users me-2"></i>Gerenciar Candidatos
                         </a>
                     @endif

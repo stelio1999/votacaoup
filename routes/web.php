@@ -12,6 +12,7 @@ use App\Http\Controllers\ResultadoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConfiguracaoController;
+use App\Http\Controllers\ForgotPasswordController;
 
 // Rota inicial (pública)
 Route::get('/', function () {
@@ -23,6 +24,19 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+// Rotas de recuperação de senha
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
+
+// Rotas alternativas com código de verificação
+Route::get('password/verify', [ForgotPasswordController::class, 'showVerifyForm'])->name('password.verify');
+Route::post('password/verify', [ForgotPasswordController::class, 'sendVerificationCode'])->name('password.send-code');
+Route::get('password/verify-code', [ForgotPasswordController::class, 'showCodeVerificationForm'])->name('password.verify.code');
+Route::post('password/verify-code', [ForgotPasswordController::class, 'verifyCode'])->name('password.verify-code');
+
 // Rotas protegidas (requerem autenticação)
 Route::middleware(['auth'])->group(function () {
     // Dashboard
@@ -30,12 +44,13 @@ Route::middleware(['auth'])->group(function () {
     
     // Usuários (apenas administrador)
     Route::middleware(['role:admin'])->group(function () {
-        Route::resource('usuarios', UserController::class);
+Route::resource('usuarios', UserController::class)->parameters([
+    'usuarios' => 'user'
+]);
         Route::resource('cargos', CargoController::class);
         Route::get('candidatos/buscar-usuarios', [CandidatoController::class, 'buscarUsuarios'])->name('candidatos.buscar-usuarios');
 
         Route::resource('candidatos', CandidatoController::class);
-        Route::resource('eleicoes', EleicaoController::class);
         Route::resource('configuracoes', ConfiguracaoController::class);
 
 // Toggle status do usuário
@@ -77,7 +92,12 @@ Route::get('votacao/historico', [VotacaoController::class, 'historico'])->name('
         Route::get('/votacao', [VotacaoController::class, 'index'])->name('votacao.index');
         Route::get('/votacao/{eleicao}', [VotacaoController::class, 'show'])->name('votacao.show');
         Route::post('/votacao/{eleicao}/votar', [VotacaoController::class, 'votar'])->name('votacao.votar');
-    });
+    
+         Route::get('votacao/comprovante/{voto}', [VotacaoController::class, 'comprovante'])
+        ->name('votacao.comprovante');
+    
+    
+        });
     
     // Resultados e relatórios (acesso para comissão eleitoral)
 Route::middleware(['role:admin,comissao'])->group(function () {
@@ -94,6 +114,17 @@ Route::middleware(['role:admin,comissao'])->group(function () {
 
     Route::get('/relatorios/exportar/{tipo}', [RelatorioController::class, 'exportar'])
         ->name('relatorios.exportar');
+
+
+// Rotas para candidatos
+Route::patch('candidatos/{candidato}/aprovar', [CandidatoController::class, 'aprovar'])->name('candidatos.aprovar');
+Route::patch('candidatos/{candidato}/reprovar', [CandidatoController::class, 'reprovar'])->name('candidatos.reprovar');
+ Route::get('candidatos/buscar-usuarios', [CandidatoController::class, 'buscarUsuarios'])->name('candidatos.buscar-usuarios');
+
+        Route::resource('candidatos', CandidatoController::class);
+       
+
+
     });
 
     Route::prefix('eleicoes')->name('eleicoes.')->group(function () {
@@ -108,6 +139,9 @@ Route::middleware(['role:admin,comissao'])->group(function () {
         // Rotas para iniciar e encerrar eleição
         Route::post('/{eleicao}/iniciar', [EleicaoController::class, 'iniciar'])->name('iniciar');
         Route::post('/{eleicao}/encerrar', [EleicaoController::class, 'encerrar'])->name('encerrar');
+
+        Route::get('/{eleicao}/candidatos', [EleicaoController::class, 'candidatos'])
+    ->name('candidatos');
     });
 
     Route::prefix('profile')->name('profile.')->group(function () {

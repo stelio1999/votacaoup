@@ -18,51 +18,7 @@
 </div>
 
 <!-- Filtros -->
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <form method="GET" action="{{ route('candidatos.index') }}" class="row g-3">
-            <div class="col-md-3">
-                <label for="eleicao" class="form-label">Eleição</label>
-                <select name="eleicao_id" id="eleicao" class="form-select">
-                    <option value="">Todas as eleições</option>
-                    @foreach(\App\Models\Eleicao::all() as $eleicao)
-                        <option value="{{ $eleicao->id }}" {{ request('eleicao_id') == $eleicao->id ? 'selected' : '' }}>
-                            {{ $eleicao->titulo }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="status" class="form-label">Status</label>
-                <select name="aprovado" id="status" class="form-select">
-                    <option value="">Todos</option>
-                    <option value="1" {{ request('aprovado') === '1' ? 'selected' : '' }}>Aprovados</option>
-                    <option value="0" {{ request('aprovado') === '0' ? 'selected' : '' }}>Pendentes</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="categoria" class="form-label">Categoria</label>
-                <select name="categoria" id="categoria" class="form-select">
-                    <option value="">Todas</option>
-                    <option value="estudante" {{ request('categoria') == 'estudante' ? 'selected' : '' }}>Estudantes</option>
-                    <option value="docente" {{ request('categoria') == 'docente' ? 'selected' : '' }}>Docentes</option>
-                    <option value="tecnico_administrativo" {{ request('categoria') == 'tecnico_administrativo' ? 'selected' : '' }}>Técnicos</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label d-block">&nbsp;</label>
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-filter me-2"></i>Filtrar
-                    </button>
-                    <a href="{{ route('candidatos.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-redo me-2"></i>Limpar
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+ 
 
 <div class="card shadow">
     <div class="card-header">
@@ -232,65 +188,10 @@
 </div>
 
 <!-- Estatísticas -->
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card border-left-primary shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-primary">Total de Candidaturas</div>
-                    <div class="h3 fw-bold">{{ $candidatos->total() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-success shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-success">Candidaturas Aprovadas</div>
-                    <div class="h3 fw-bold">{{ $candidatos->where('aprovado', true)->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-warning shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-warning">Candidaturas Pendentes</div>
-                    <div class="h3 fw-bold">{{ $candidatos->where('aprovado', false)->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-info shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-info">Média por Eleição</div>
-                    @php
-                        $eleicoesCount = \App\Models\Eleicao::has('candidatos')->count();
-                        $media = $eleicoesCount > 0 ? round($candidatos->total() / $eleicoesCount, 1) : 0;
-                    @endphp
-                    <div class="h3 fw-bold">{{ $media }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <style>
-.avatar-circle {
-    width: 40px;
-    height: 40px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
+
 </style>
 
 @endsection

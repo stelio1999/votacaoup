@@ -522,79 +522,7 @@
 </div>
 
 <style>
-.avatar-large {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
 
-.stat-number {
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: var(--cinza-texto);
-    margin-top: 0.5rem;
-}
-
-.activity-timeline {
-    position: relative;
-    padding-left: 30px;
-}
-
-.activity-timeline::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--azul-claro);
-    opacity: 0.3;
-}
-
-.activity-item {
-    position: relative;
-}
-
-.activity-item::before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--azul-claro);
-    border: 2px solid white;
-}
-
-.activity-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(49, 130, 206, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-.form-check.form-switch .form-check-input {
-    width: 3em;
-    height: 1.5em;
-}
 </style>
 @endsection
 

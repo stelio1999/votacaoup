@@ -4,132 +4,7 @@
 
 @section('styles')
 <style>
-    .receipt-container {
-        max-width: 600px;
-        margin: 0 auto;
-    }
     
-    .receipt-card {
-        border: 2px solid #e2e8f0;
-        border-radius: 15px;
-        padding: 2rem;
-        background: white;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .receipt-header {
-        text-align: center;
-        padding-bottom: 2rem;
-        border-bottom: 2px dashed #e2e8f0;
-        margin-bottom: 2rem;
-    }
-    
-    .receipt-logo {
-        max-width: 120px;
-        margin-bottom: 1rem;
-    }
-    
-    .receipt-number {
-        background: var(--azul-escuro);
-        color: white;
-        padding: 0.5rem 1.5rem;
-        border-radius: 50px;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 1rem;
-    }
-    
-    .receipt-details {
-        margin-bottom: 2rem;
-    }
-    
-    .detail-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid #f1f1f1;
-    }
-    
-    .detail-row:last-child {
-        border-bottom: none;
-    }
-    
-    .detail-label {
-        font-weight: 600;
-        color: var(--azul-escuro);
-    }
-    
-    .detail-value {
-        color: #333;
-        text-align: right;
-        max-width: 60%;
-    }
-    
-    .hash-code {
-        background: var(--cinza-claro);
-        padding: 1rem;
-        border-radius: 8px;
-        font-family: 'Courier New', monospace;
-        font-size: 0.9rem;
-        word-break: break-all;
-        margin: 1rem 0;
-        border: 1px dashed #cbd5e0;
-    }
-    
-    .verification-qr {
-        text-align: center;
-        padding: 2rem;
-        background: #f8f9fa;
-        border-radius: 10px;
-        margin: 2rem 0;
-    }
-    
-    .qr-placeholder {
-        width: 200px;
-        height: 200px;
-        background: white;
-        border: 2px dashed #cbd5e0;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        color: var(--azul-claro);
-        font-size: 3rem;
-    }
-    
-    .actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-    }
-    
-    .watermark {
-        position: absolute;
-        opacity: 0.03;
-        font-size: 10rem;
-        transform: rotate(-45deg);
-        z-index: 0;
-        pointer-events: none;
-        color: var(--azul-escuro);
-    }
-    
-    @media print {
-        .no-print {
-            display: none !important;
-        }
-        
-        .receipt-card {
-            border: none;
-            box-shadow: none;
-        }
-        
-        .actions {
-            display: none;
-        }
-    }
 </style>
 @endsection
 
@@ -244,7 +119,7 @@
             <i class="fas fa-home me-2"></i>Voltar ao Início
         </a>
     </div>
-    
+    <!--
     <div class="alert alert-info mt-4 no-print">
         <div class="d-flex">
             <div class="me-3">
@@ -259,7 +134,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 @endsection
 

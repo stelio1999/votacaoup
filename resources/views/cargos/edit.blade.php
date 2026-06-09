@@ -148,6 +148,7 @@
             </div>
         </div>
         
+        <!--
         <div class="card shadow mt-4">
             <div class="card-header">
                 <h6 class="m-0 fw-bold text-primary">
@@ -182,7 +183,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     
     <div class="col-lg-4">
@@ -238,7 +239,7 @@
                 </div>
             </div>
         </div>
-        
+        <!--
         <div class="card shadow mt-4">
             <div class="card-header">
                 <h6 class="m-0 fw-bold text-primary">
@@ -288,7 +289,7 @@
                     <i class="fas fa-trash me-2"></i>Excluir Cargo
                 </button>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 

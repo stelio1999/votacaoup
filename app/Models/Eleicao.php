@@ -90,6 +90,9 @@ class Eleicao extends Model
 
     public function calcularResultados()
     {
+         if ($this->resultados()->exists()) {
+        return;
+    }
         // Calcular votos por candidato
         $candidatos = $this->candidatos()->withCount(['votos as total_votos'])->get();
         $totalVotosValidos = $this->votos()->where('valido', true)->count();
@@ -140,11 +143,21 @@ class Eleicao extends Model
                $this->data_inicio <= now() && 
                $this->data_fim >= now();
     }
-    protected static function booted()
+   protected static function booted()
 {
     static::creating(function ($eleicao) {
         $eleicao->slug = Str::slug($eleicao->titulo) . '-' . time();
     });
+
+    static::deleting(function ($eleicao) {
+
+        // se usar SoftDelete e quiser apagar filhos também
+        $eleicao->votos()->delete();
+        $eleicao->candidatos()->delete();
+        $eleicao->resultados()->delete();
+
+    });
 }
+
 
 }

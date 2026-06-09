@@ -174,7 +174,7 @@
     </div>
 </div>
 @endif
-
+<!--
 <div class="card shadow mt-4">
     <div class="card-header">
         <h6 class="m-0 fw-bold text-primary">
@@ -212,34 +212,10 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection
 
 @section('styles')
 <style>
-.step-number {
-    width: 50px;
-    height: 50px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
-
-.voting-card {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.voting-card:hover {
-    border-color: var(--verde-suave);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(56, 161, 105, 0.1);
-}
 </style>
 @endsection

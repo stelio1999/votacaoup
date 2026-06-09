@@ -20,13 +20,22 @@
     
     @yield('styles')
 </head>
+@php
+    $fullWidth = View::hasSection('full-width');
+@endphp
+
 <body>
-   
+   <div id="sidebar-overlay"></div>
+
     <!-- Menu lateral -->
-    <div class="d-flex" id="wrapper">
-        @auth
+    <div class="d-flex {{ $fullWidth ? '' : '' }}" id="wrapper">
+
         <!-- Sidebar -->
-        <div class="bg-dark-blue border-right" id="sidebar-wrapper">
+
+        @auth
+            @if(!$fullWidth)
+            <div class="bg-dark-blue border-right" id="sidebar-wrapper">
+
             <div class="sidebar-heading text-center py-4">
                 <img src="{{ asset('images/logo-up.png') }}" alt="UP Maputo" class="img-fluid logo-img">
                 <h4 class="text-white mt-3">Votação Eletrónica</h4>
@@ -53,21 +62,32 @@
                         <i class="fas fa-vote-yea me-2"></i>Eleições
                     </a>
 
-                    <a href="{{ route('configuracoes.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-cog me-2"></i>Configurações
+                    <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-file-alt me-2"></i>Relatórios
                     </a>
+
+                    <!--<a href="{{ route('configuracoes.index') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-cog me-2"></i>Configurações
+                    </a>-->
                 @endif
 
                 {{-- APENAS ELEITOR --}}
                 @if(auth()->user()->role === 'eleitor')
                     <a href="{{ route('votacao.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-ballot me-2"></i>Votação
+                        <i class="fas fa-vote-yea me-2"></i>Votação
 
                     </a>
                 @endif
 
                 {{-- COMISSÃO ELEITORAL E ADMIN --}}
-                @if(auth()->user()->role === 'admin' || auth()->user()->role === 'comissao')
+                @if(auth()->user()->role === 'comissao')
+                <a href="{{ route('candidatos.index') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-tie me-2"></i>Candidatos
+                    </a>
+                    <a href="{{ route('eleicoes.index') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-vote-yea me-2"></i>Eleições
+                    </a>
+
                     <a href="{{ route('resultados.index') }}" class="list-group-item list-group-item-action">
                         <i class="fas fa-chart-bar me-2"></i>Resultados
                     </a>
@@ -80,65 +100,85 @@
                 
             </div>
         </div>
-        @endauth
+      @endif
+@endauth
 
         <!-- Conteúdo da página -->
-        <div id="page-content-wrapper">
+<div id="page-content-wrapper" class="{{ $fullWidth ? 'w-100 ms-0' : '' }}">
             <!-- Navbar -->
+             @if(!$fullWidth)
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <div class="container-fluid">
-                    <button class="btn btn-dark" id="menu-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto">
-                            @if(auth()->check())
-                            <!-- No navbar -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                        @if(auth()->user()->foto)
-                                            <img src="{{ Storage::url(auth()->user()->foto) }}" 
-                                                alt="{{ auth()->user()->name }}" 
-                                                class="rounded-circle me-1"
-                                                style="width: 30px; height: 30px; object-fit: cover;">
-                                        @else
-                                            <i class="fas fa-user-circle me-1"></i>
-                                        @endif
-                                        {{ auth()->user()->name }}
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('profile.show') }}">
-                                                <i class="fas fa-user me-2"></i>Meu Perfil
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('profile.security') }}">
-                                                <i class="fas fa-shield-alt me-2"></i>Segurança
-                                            </a>
-                                        </li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item">
-                                                    <i class="fas fa-sign-out-alt me-2"></i>Sair
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </li>
-                            @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Entrar</a>
-                            </li>
-                            @endif
-                        </ul>
+    <div class="container-fluid">
+        @auth
+        <button class="btn btn-dark" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        @endauth
+        <div class="navbar-collapse">
+            <ul class="navbar-nav ms-auto align-items-center">
+                
+                <!-- DARK MODE TOGGLE BUTTON -->
+                <li class="nav-item me-3">
+                    <div class="dark-mode-toggle">
+                        <input type="checkbox" class="dark-mode-checkbox" id="darkmode-toggle">
+                        <label class="dark-mode-label" for="darkmode-toggle">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <span class="dark-mode-ball">
+                                <i class="fas fa-moon" style="color: #2c3e50; font-size: 12px;"></i>
+                            </span>
+                        </label>
                     </div>
-                </div>
-            </nav>
-            
+                </li>
+                
+                @if(auth()->check())
+                <!-- User dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        @if(auth()->user()->foto)
+                            <img src="{{ Storage::url(auth()->user()->foto) }}" 
+                                alt="{{ auth()->user()->name }}" 
+                                class="rounded-circle me-2"
+                                style="width: 30px; height: 30px; object-fit: cover;">
+                        @else
+                            <div class="avatar-circle me-2" style="width: 30px; height: 30px; font-size: 14px;">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                            </div>
+                        @endif
+                        <span>{{ auth()->user()->name }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                       <!-- <li>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                <i class="fas fa-user me-2"></i>Meu Perfil
+                            </a>
+                        </li>-->
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile.security') }}">
+                                <i class="fas fa-shield-alt me-2"></i>Segurança
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Sair
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+                </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+</nav>
+            @endif
             <!-- Conteúdo principal -->
             <div class="container-fluid px-4 py-4">
                 @if(session('success'))
@@ -172,7 +212,93 @@
     
     <!-- Scripts personalizados -->
     <script src="{{ asset('js/script.js') }}"></script>
-    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar preferência salva no localStorage
+        const darkModeToggle = document.getElementById('darkmode-toggle');
+        const body = document.body;
+        
+        // Função para atualizar o ícone da bola
+        function updateBallIcon(isDark) {
+            const ball = document.querySelector('.dark-mode-ball i');
+            if (ball) {
+                ball.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                ball.style.color = isDark ? '#f39c12' : '#2c3e50';
+            }
+        }
+        
+        // Verificar preferência salva
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+            updateBallIcon(true);
+        } else {
+            updateBallIcon(false);
+        }
+        
+        // Evento de toggle do dark mode
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'enabled');
+                    updateBallIcon(true);
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'disabled');
+                    updateBallIcon(false);
+                }
+            });
+        }
+        
+        // Detectar preferência do sistema operacional
+        if (!localStorage.getItem('darkMode')) {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            if (prefersDarkScheme.matches) {
+                body.classList.add('dark-mode');
+                if (darkModeToggle) {
+                    darkModeToggle.checked = true;
+                    updateBallIcon(true);
+                }
+                localStorage.setItem('darkMode', 'enabled');
+            }
+            
+            // Escutar mudanças na preferência do sistema
+            prefersDarkScheme.addEventListener('change', function(e) {
+                if (!localStorage.getItem('darkMode')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        if (darkModeToggle) darkModeToggle.checked = true;
+                        updateBallIcon(true);
+                    } else {
+                        body.classList.remove('dark-mode');
+                        if (darkModeToggle) darkModeToggle.checked = false;
+                        updateBallIcon(false);
+                    }
+                }
+            });
+        }
+        
+        // Garantir que as cores do DataTables se adaptem ao dark mode
+        if (typeof $.fn.DataTable !== 'undefined') {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        if (body.classList.contains('dark-mode')) {
+                            $('.dataTables_wrapper').addClass('dark-mode');
+                        } else {
+                            $('.dataTables_wrapper').removeClass('dark-mode');
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(body, { attributes: true });
+        }
+    });
+</script>
+
     @yield('scripts')
 </body>
 </html>

@@ -32,6 +32,11 @@ class Candidato extends Model
         return $this->belongsTo(User::class);
     }
 
+public function resultado()
+{
+    return $this->hasOne(Resultado::class);
+}
+
     public function eleicao()
     {
         return $this->belongsTo(Eleicao::class);

@@ -1,90 +1,7 @@
 @extends('layouts.app')
+@section('full-width')
 
 @section('title', 'Entrar no Sistema')
-
-@section('styles')
-<style>
-    .login-page {
-        min-height: 100vh;
-        background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    
-    .login-card {
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        width: 100%;
-        max-width: 450px;
-        overflow: hidden;
-    }
-    
-    .login-header {
-        background: var(--azul-escuro);
-        color: white;
-        padding: 2rem;
-        text-align: center;
-    }
-    
-    .login-body {
-        padding: 2rem;
-    }
-    
-    .login-logo {
-        max-width: 120px;
-        margin-bottom: 1rem;
-    }
-    
-    .form-control {
-        border-radius: 10px;
-        padding: 0.75rem 1rem;
-        border: 2px solid #e2e8f0;
-    }
-    
-    .form-control:focus {
-        border-color: var(--azul-claro);
-        box-shadow: 0 0 0 0.25rem rgba(49, 130, 206, 0.25);
-    }
-    
-    .btn-login {
-        background: var(--azul-claro);
-        border: none;
-        color: white;
-        padding: 0.75rem;
-        border-radius: 10px;
-        font-weight: 600;
-        width: 100%;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-login:hover {
-        background: var(--azul-escuro);
-        transform: translateY(-2px);
-    }
-    
-    .login-footer {
-        text-align: center;
-        padding: 1rem;
-        border-top: 1px solid #e2e8f0;
-        color: #718096;
-    }
-    
-    .floating-element {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(180deg); }
-    }
-</style>
-@endsection
 
 @section('content')
 <div class="login-page">
@@ -96,12 +13,12 @@
     <div class="login-card">
         <div class="login-header">
             <img src="{{ asset('images/logo-up.png') }}" alt="UP Maputo" class="login-logo">
-            <h3 class="mb-0">Sistema de Votação Eletrónica</h3>
+           <!-- <h3-- class="mb-0">Sistema de Votação Eletrónica</h3-->
             <p class="mb-0 opacity-75">Universidade Pedagógica de Maputo</p>
         </div>
         
         <div class="login-body">
-            <h4 class="text-center mb-4">Entrar no Sistema</h4>
+            <!-- <h4-- class="text-center mb-4">Entrar no Sistema</h4-->
             
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -117,7 +34,7 @@
                 @csrf
                 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Institucional</label>
+                    <label for="email" class="form-label">Email </label>
                     <div class="input-group">
                         <span class="input-group-text">
                             <i class="fas fa-envelope"></i>
@@ -172,7 +89,7 @@
                 </button>
                 
                 <div class="text-center">
-                    <a href="#" class="text-decoration-none">
+                    <a href="{{ route('password.request') }}" class="text-decoration-none">
                         <small>Esqueceu a palavra-passe?</small>
                     </a>
                 </div>
@@ -215,4 +132,7 @@ $(document).ready(function() {
     $('#email').focus();
 });
 </script>
+
+
+@endsection
 @endsection

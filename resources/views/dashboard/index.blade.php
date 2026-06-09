@@ -5,9 +5,8 @@
 @section('content')
 <div class="row">
     <div class="col-12 mb-4">
-        <h1 class="h3 mb-0 text-dark">Dashboard</h1>
-        <p class="text-muted">Bem-vindo, {{ auth()->user()->name }}! Aqui está o resumo do sistema.</p>
-    </div>
+
+</div>
 </div>
 
 <!-- Cartões de Estatísticas -->
@@ -86,6 +85,7 @@
 </div>
 
 <!-- Gráficos e Tabelas -->
+ <!--
 <div class="row">
     <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     
     <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
@@ -144,7 +144,7 @@
 </div>
 
 <!-- Informações do Sistema -->
-<div class="row">
+<!--<div class="row">
     <div class="col-12">
         <div class="card shadow">
             <div class="card-header py-3">
@@ -166,5 +166,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection

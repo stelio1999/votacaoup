@@ -198,7 +198,7 @@
                 </div>
             </div>
         </div>
-        
+        <!--
         <div class="card shadow">
             <div class="card-header bg-warning text-dark">
                 <h6 class="m-0 fw-bold">
@@ -233,7 +233,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 
@@ -258,19 +258,6 @@
 
 @section('styles')
 <style>
-.avatar-medium {
-    width: 100px;
-    height: 100px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
 </style>
 @endsection
 

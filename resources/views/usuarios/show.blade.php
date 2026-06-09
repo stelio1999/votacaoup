@@ -416,40 +416,7 @@
 </div>
 
 <style>
-.avatar-circle-lg {
-    width: 120px;
-    height: 120px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
 
-.initials-lg {
-    font-size: 2.5rem;
-}
-
-.nav-tabs .nav-link {
-    color: var(--cinza-texto);
-    border: none;
-    padding: 0.75rem 1.5rem;
-}
-
-.nav-tabs .nav-link.active {
-    color: var(--azul-claro);
-    border-bottom: 3px solid var(--azul-claro);
-    background: transparent;
-    font-weight: 600;
-}
-
-.nav-tabs .nav-link:hover:not(.active) {
-    color: var(--azul-escuro);
-}
 </style>
 @endsection
 

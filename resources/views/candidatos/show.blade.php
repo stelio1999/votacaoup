@@ -268,29 +268,7 @@
 
 @section('styles')
 <style>
-.avatar-large {
-    width: 150px;
-    height: 150px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
 
-.proposta-content {
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.proposta-content p {
-    margin-bottom: 1rem;
-}
 </style>
 @endsection
 

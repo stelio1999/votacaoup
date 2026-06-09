@@ -254,19 +254,7 @@
 </div>
 
 <style>
-.avatar-preview {
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    font-weight: bold;
-    margin: 0 auto;
-}
+
 </style>
 @endsection
 

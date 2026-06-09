@@ -22,10 +22,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="m-0 fw-bold text-primary">Lista de Usuários</h6>
             <div class="input-group" style="max-width: 300px;">
-                <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar usuários...">
-                <button class="btn btn-outline-secondary" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
+                
             </div>
         </div>
     </div>
@@ -162,48 +159,7 @@
 </div>
 
 <!-- Estatísticas -->
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card border-left-primary shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-primary">Total de Usuários</div>
-                    <div class="h3 fw-bold">{{ $users->total() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-success shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-success">Usuários Ativos</div>
-                    <div class="h3 fw-bold">{{ $users->where('ativo', true)->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-info shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-info">Administradores</div>
-                    <div class="h3 fw-bold">{{ $users->where('role', 'admin')->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-warning shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-warning">Comissão Eleitoral</div>
-                    <div class="h3 fw-bold">{{ $users->where('role', 'comissao')->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection
 
 @section('scripts')
@@ -223,16 +179,6 @@ $(document).ready(function() {
 </script>
 
 <style>
-.avatar-circle {
-    width: 40px;
-    height: 40px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
+
 </style>
 @endsection

@@ -193,6 +193,7 @@
     </div>
     
     <div class="col-lg-4">
+        <!--
         <div class="card shadow">
             <div class="card-header">
                 <h6 class="m-0 fw-bold text-primary">
@@ -229,7 +230,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>-->
         
         <div class="card shadow mt-4">
             <div class="card-header">

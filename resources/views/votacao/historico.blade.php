@@ -249,22 +249,7 @@
 @endif
 
 <style>
-.avatar-circle-sm {
-    width: 30px;
-    height: 30px;
-    background: var(--azul-claro);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
 
-.initials-sm {
-    font-size: 0.8rem;
-}
 </style>
 @endsection
 

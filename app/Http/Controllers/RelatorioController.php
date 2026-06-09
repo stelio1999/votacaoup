@@ -124,9 +124,11 @@ class RelatorioController extends Controller
             $query->where('id', $eleicaoId);
         }
 
-        $eleicoes = $query->withCount(['votos', 'candidatos'])
-                         ->with('cargo')
-                         ->get();
+        $eleicoes = Eleicao::whereBetween('created_at', [$inicio, $fim])
+                   ->withCount(['votos', 'candidatos'])
+                   ->with('cargo')
+                   ->paginate(10);
+
 
         $estatisticas = [
             'total' => $eleicoes->count(),
@@ -147,8 +149,8 @@ class RelatorioController extends Controller
 
     private function relatorioUsuarios($inicio, $fim)
     {
-        $usuarios = User::whereBetween('created_at', [$inicio, $fim])
-                       ->get();
+       $usuarios = User::whereBetween('created_at', [$inicio, $fim])->paginate(10);
+
 
         $estatisticas = [
             'total' => $usuarios->count(),

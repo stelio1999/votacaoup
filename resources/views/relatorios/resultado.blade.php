@@ -4,66 +4,7 @@
 
 @section('styles')
 <style>
-    .report-header {
-        background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        margin-bottom: 2rem;
-    }
     
-    .stat-card {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        height: 100%;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--azul-escuro);
-        line-height: 1;
-    }
-    
-    .stat-label {
-        color: var(--cinza-texto);
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .chart-container {
-        position: relative;
-        height: 300px;
-        width: 100%;
-    }
-    
-    .data-table th {
-        background-color: var(--azul-escuro);
-        color: white;
-    }
-    
-    .export-buttons {
-        position: sticky;
-        top: 20px;
-        z-index: 100;
-    }
-    
-    .period-badge {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 20px;
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
 </style>
 @endsection
 

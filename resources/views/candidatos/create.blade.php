@@ -4,73 +4,7 @@
 
 @section('styles')
 <style>
-    .candidate-search-results {
-        border: 1px solid #dee2e6;
-        border-radius: 0.375rem;
-        max-height: 300px;
-        overflow-y: auto;
-        position: absolute;
-        width: 100%;
-        background: white;
-        z-index: 1000;
-        display: none;
-    }
-    
-    .candidate-result-item {
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid #f1f1f1;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    
-    .candidate-result-item:hover {
-        background-color: #f8f9fa;
-    }
-    
-    .candidate-result-item.selected {
-        background-color: #e7f1ff;
-    }
-    
-    .candidate-preview {
-        background: #f8f9fa;
-        border-radius: 10px;
-        padding: 1.5rem;
-        margin-top: 1rem;
-        display: none;
-    }
-    
-    .candidate-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: var(--azul-claro);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin: 0 auto 1rem;
-    }
-    
-    .photo-preview {
-        width: 150px;
-        height: 150px;
-        border: 2px dashed #dee2e6;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        overflow: hidden;
-        background: #f8f9fa;
-    }
-    
-    .photo-preview img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+   
 </style>
 @endsection
 
@@ -342,7 +276,7 @@
         </div>
     </div>
     
-    <div class="col-lg-4">
+    <div class="col-lg-4"><!--
         <div class="card shadow">
             <div class="card-header">
                 <h6 class="m-0 fw-bold text-primary">
@@ -395,7 +329,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>-->
         
         <div class="card shadow mt-4">
             <div class="card-header">

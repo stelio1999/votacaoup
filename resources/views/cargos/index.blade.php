@@ -91,12 +91,13 @@
                                       onsubmit="return confirm('Tem certeza que deseja alterar o status deste cargo?')">
                                     @csrf
                                     @method('PATCH')
+                                    <!--
                                     <button type="submit" 
                                             class="btn btn-sm {{ $cargo->ativo ? 'btn-secondary' : 'btn-success' }}"
                                             data-bs-toggle="tooltip" 
                                             title="{{ $cargo->ativo ? 'Desativar' : 'Ativar' }}">
                                         <i class="fas {{ $cargo->ativo ? 'fa-ban' : 'fa-check' }}"></i>
-                                    </button>
+                                    </button>-->
                                 </form>
                                 <form action="{{ route('cargos.destroy', $cargo) }}" 
                                       method="POST" 
@@ -131,49 +132,8 @@
 </div>
 
 <!-- Estatísticas -->
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card border-left-primary shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-primary">Total de Cargos</div>
-                    <div class="h3 fw-bold">{{ $cargos->total() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-success shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-success">Cargos Ativos</div>
-                    <div class="h3 fw-bold">{{ $cargos->where('ativo', true)->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-info shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-info">Para Estudantes</div>
-                    <div class="h3 fw-bold">{{ $cargos->where('categoria', 'estudante')->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-left-warning shadow">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="text-xs fw-bold text-warning">Para Docentes</div>
-                    <div class="h3 fw-bold">{{ $cargos->where('categoria', 'docente')->count() }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+<!--
 <div class="card shadow mt-4">
     <div class="card-header">
         <h6 class="m-0 fw-bold text-primary">
@@ -214,7 +174,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection
 
 @section('scripts')
