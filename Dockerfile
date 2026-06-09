@@ -27,7 +27,7 @@ RUN chmod -R 777 storage bootstrap/cache
 # otimizações Laravel
 RUN php artisan config:clear
 RUN php artisan cache:clear
-
+RUN npm install && npm run build || true
 EXPOSE 10000
 
 CMD php artisan serve --host 0.0.0.0 --port 10000
